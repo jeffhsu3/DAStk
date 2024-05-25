@@ -8,3 +8,5 @@ configparams.py
 *.DONE
 *.sbatch.o*
 *.sbatch.e*
+
+*.egg-info
