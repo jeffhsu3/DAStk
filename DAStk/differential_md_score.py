@@ -398,6 +398,7 @@ def main():
                 ax.text(x, y, "%s" % short_text, fontsize=8, color=label_color)
             )
             most_relevant_tfs.append(text)
+<<<<<<< HEAD
     # adjust_text(texts, force_points=1, on_basemap=True, expand_points=(5,5), expand_text=(3,3), arrowprops=dict(arrowstyle="-", lw=1, color='grey', alpha=0.5))
     adjust_text(
         texts,
@@ -409,6 +410,16 @@ def main():
 
     # Check to make sure plot titles are not too large... will skew plot image otherwise
 
+=======
+    if len(texts) == 0:
+        print("None of the motifs present a significant difference, based on the given p-value cutoff (%s)" % P_VALUE_CUTOFF)
+        sys.exit(0)
+    #adjust_text(texts, force_points=1, on_basemap=True, expand_points=(5,5), expand_text=(3,3), arrowprops=dict(arrowstyle="-", lw=1, color='grey', alpha=0.5))
+    adjust_text(texts, force_points=1, expand_points=(2,2), expand_text=(2,2), arrowprops=dict(arrowstyle="-", lw=1, color='black', alpha=0.8))
+    
+    #Check to make sure plot titles are not too large... will skew plot image otherwise
+    
+>>>>>>> 0570c05cb2c2f0401ad964088adea3c150919fa1
     if len(assay_1_prefix) <= 19:
         label_1_str = assay_1_prefix
     else:
@@ -435,6 +446,7 @@ def main():
     )
     plt.ylabel("${\Delta}$ MD-score", fontsize=14)
     plt.xlim(np.min(nr_peaks), np.max(nr_peaks) + 1)
+<<<<<<< HEAD
     plt.xscale("log", base=2)
     loc = plticker.MultipleLocator(
         base=2.0
@@ -443,6 +455,14 @@ def main():
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.tick_params(axis="x", reset=False, which="both", length=5, width=1)
+=======
+    plt.xscale('log',base=2)
+    loc = plticker.MultipleLocator(base=2.0) # this locator puts ticks at regular intervals
+    ax.xaxis.set_major_locator(loc)    
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.tick_params(axis='x',reset=False,which='both',length=5,width=1)
+>>>>>>> 0570c05cb2c2f0401ad964088adea3c150919fa1
     y_bound = max(np.abs(np.min(delta_md)), np.max(delta_md)) + 0.01
     plt.ylim(-1 * y_bound, y_bound)
     plt.tight_layout()
